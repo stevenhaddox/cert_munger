@@ -1,3 +1,5 @@
+[![Travis CI](https://travis-ci.org/stevenhaddox/cert_munger.svg?branch=master)](https://travis-ci.org/stevenhaddox/cert_munger.svg?branch=master) [![Code Climate](https://codeclimate.com/github/stevenhaddox/cert_munger/badges/gpa.svg)](https://codeclimate.com/github/stevenhaddox/cert_munger) [![Dependency Status](https://gemnasium.com/stevenhaddox/cert_munger.png)](https://gemnasium.com/stevenhaddox/cert_munger)
+
 # CertMunger
 
 A gem that takes string input for X509 certificates and attempts to reformat
