@@ -29,7 +29,7 @@ Or install it yourself as:
 new_cert = "<invalidly formatted cert string>".to_cert
 
 # Or a string read from a file (one or multiple lines):
-bad_cert = File.read(malformeed_cert_to_parse)
+bad_cert = File.read('malformed_cert_to_parse')
 bad_cert.to_cert!
 ```
 
