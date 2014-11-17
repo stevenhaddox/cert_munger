@@ -1,0 +1,9 @@
+inherit_from: rubocop-todo.yml
+
+AllCops:
+  Exclude:
+  - 'cert_munger.gemspec'
+  - 'lib/cert_munger/version.rb'
+  - 'spec/**/*'
+  - 'vendor/cache/**/*'
+  - '**/gems/**/*'
