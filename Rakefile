@@ -1,8 +1,9 @@
 require 'bundler/gem_tasks'
 require 'rspec/core/rake_task'
 require 'rubocop/rake_task'
+require 'coveralls/rake/task'
 
-task default: [:spec, :rubocop]
+task default: [:spec, :rubocop, 'coveralls:push']
 
 desc 'Run specs'
 RSpec::Core::RakeTask.new(:spec)
