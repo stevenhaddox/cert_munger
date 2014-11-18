@@ -6,4 +6,5 @@ AllCops:
   - 'lib/cert_munger/version.rb'
   - 'spec/**/*'
   - 'vendor/cache/**/*'
+  - 'vendor/bundle/**/*'
   - '**/gems/**/*'
