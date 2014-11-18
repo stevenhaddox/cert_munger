@@ -29,7 +29,7 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency 'simplecov', '~> 0.9'
   spec.add_development_dependency 'yard', '~> 0.8'
 
-  spec.add_dependency 'logging'
+  spec.add_dependency 'logging', '~> 1.8'
   spec.cert_chain  = ['certs/stevenhaddox.pem']
   spec.signing_key = File.expand_path("~/.gemcert/gem-private_key.pem") if $0 =~ /gem\z/
 end
