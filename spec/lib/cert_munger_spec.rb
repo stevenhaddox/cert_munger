@@ -59,5 +59,10 @@ describe CertMunger do
       new_cert = subject.class.send(:to_cert, one_line_cert)
       expect(new_cert.to_s).to eq(certificate.to_s)
     end
+
+    it "should parse a certificate with all content in one line, space delimited" do
+      new_cert = subject.class.send(:to_cert, one_line_spaces_cert)
+      expect(new_cert.to_s).to eq(certificate.to_s)
+    end
   end
 end
