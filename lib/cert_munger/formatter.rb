@@ -63,10 +63,30 @@ module CertMunger
     # @param raw_cert [String] The string of text you wish to parse into a cert
     # @return [String] reformatted certificate body
     def one_line_contents(raw_cert)
-      cert_contents = raw_cert.split('\n')
-      cert_contents.pop
-      cert_contents.shift
+      # Detect if we have newlines, if not, split on spaces
+      if raw_cert.include?('\n')
+        cert_contents = raw_cert.split('\n')
+      else
+        cert_contents = parse_space_delimited_cert(raw_cert)
+      end
+      cert_contents.pop   # Remove -----BEGIN CERTIFICATE-----
+      cert_contents.shift # Remove -----END CERTIFICATE-----
+
       cert_contents.map! { |el| el.match('\W+[t|n|r](.*)')[1] }
+    end
+
+    # Attempts to reformat one-line certificate bodies
+    #
+    # @param raw_cert [String] The string of text you wish to parse into a cert
+    # @return [Array] reformatted certificate content in Array format
+    def parse_space_delimited_cert(raw_cert)
+      cert_contents = raw_cert.split(' ')
+      # "-----BEGIN CERTIFICATE------" fix
+      cert_contents[0] += " #{cert_contents.delete_at(1)}"
+      # "-----END CERTIFICATE------" fix
+      cert_contents[-1] = "#{cert_contents[-2]} #{cert_contents.delete_at(-1)}"
+
+      cert_contents.map { |el| "\\t#{el}" } # Hack it to match expected syntax
     end
 
     # Attempts to reformat multi-line certificate bodies
