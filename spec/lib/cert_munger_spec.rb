@@ -15,6 +15,7 @@ describe CertMunger do
   let!(:certificate)          { OpenSSL::X509::Certificate.new(raw_cert) }
   let!(:malformed_cert)       { File.read("spec/certs/malformed.crt") }
   let!(:one_line_cert)        { File.read("spec/certs/one_line.crt") }
+  let!(:one_line_spaces_cert) { File.read("spec/certs/one_line_spaces.crt") }
   let!(:passenger_nginx_cert) { File.read("spec/certs/passenger.crt") }
 
   #
@@ -34,6 +35,11 @@ describe CertMunger do
 
     it "should parse a certificate with all content in one line" do
       new_cert = subject.to_cert(one_line_cert)
+      expect(new_cert.to_s).to eq(certificate.to_s)
+    end
+
+    it "should parse a certificate with all content in one line, space delimited" do
+      new_cert = subject.to_cert(one_line_spaces_cert)
       expect(new_cert.to_s).to eq(certificate.to_s)
     end
   end
