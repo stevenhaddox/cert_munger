@@ -48,11 +48,11 @@ module CertMunger
     # @return [String] reformatted and (hopefully) parseable certificate string
     def build_cert(raw_cert)
       tmp_cert = ['-----BEGIN CERTIFICATE-----']
-      if raw_cert.lines.count == 1
-        cert_contents = one_line_contents(raw_cert)
-      else
-        cert_contents = multi_line_contents(raw_cert)
-      end
+      cert_contents = if raw_cert.lines.count == 1
+                        one_line_contents(raw_cert)
+                      else
+                        multi_line_contents(raw_cert)
+                      end
       tmp_cert << cert_contents.flatten # put mixed space lines as own elements
       tmp_cert << '-----END CERTIFICATE-----'
       tmp_cert.join("\n").rstrip
@@ -64,11 +64,11 @@ module CertMunger
     # @return [String] reformatted certificate body
     def one_line_contents(raw_cert)
       # Detect if we have newlines, if not, split on spaces
-      if raw_cert.include?('\n')
-        cert_contents = raw_cert.split('\n')
-      else
-        cert_contents = parse_space_delimited_cert(raw_cert)
-      end
+      cert_contents = if raw_cert.include?('\n')
+                        raw_cert.split('\n')
+                      else
+                        parse_space_delimited_cert(raw_cert)
+                      end
       cert_contents.pop   # Remove -----BEGIN CERTIFICATE-----
       cert_contents.shift # Remove -----END CERTIFICATE-----
 
