@@ -11,6 +11,9 @@ the `.to_cert` and `.to_cert!` methods through the CertMunger module.
 Add this line to your application's Gemfile:
 
 ```ruby
+# Ruby 2.0+:
+gem 'cert_munger', '~> 1.0'
+# Ruby 1.9 support:
 gem 'cert_munger', '~> 0.2'
 ```
 
