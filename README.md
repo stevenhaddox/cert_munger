@@ -11,7 +11,7 @@ the `.to_cert` and `.to_cert!` methods through the CertMunger module.
 Add this line to your application's Gemfile:
 
 ```ruby
-gem 'cert_munger'
+gem 'cert_munger', '~> 0.2'
 ```
 
 And then execute:
